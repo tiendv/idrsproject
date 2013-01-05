@@ -1,0 +1,24 @@
+Phase:emailAnnotation
+Input: Token SpaceToken Address
+Options: control = appelt
+
+Rule:EmailAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		{Address.kind=="email"}
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):emailAnnotation
+-->
+:emailAnnotation.idrsEmail = {rule = "EmailAnnotation"}

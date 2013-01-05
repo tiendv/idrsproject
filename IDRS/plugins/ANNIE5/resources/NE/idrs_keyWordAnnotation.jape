@@ -1,0 +1,28 @@
+Phase:keyWordAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:KeyWordAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		(({Token.string==~"[Oo]ther"}{SpaceToken.kind=="space"})?({Token.string==~"[Kk]eywords"})) |
+		(({Token.string==~"[Kk]ey"}{SpaceToken.kind=="space"}{Token.string==~"[Ww]ords"})
+		({SpaceToken.kind=="space"}{Token.string==~"[Pp]hrases"})?) |
+		({Token.string==~"[Cc]ategories"}{SpaceToken.kind=="space"}{Token.string=="and"}{SpaceToken.kind=="space"}{Token.string==~"[Ss]ubject"}{SpaceToken.kind=="space"}{Token.string==~"[Dd]escriptors"}) |
+		({Token.string==~"[Ii]ndex"}{SpaceToken.kind=="space"}{Token.string==~"[Tt]erms"})
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):keyWordAnnotation
+-->
+:keyWordAnnotation.idrsKeyWord = {rule = "KeyWordAnnotation"}

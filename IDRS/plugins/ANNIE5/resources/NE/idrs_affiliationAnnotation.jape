@@ -1,0 +1,40 @@
+Phase:affiliationAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:AffiliationAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		{Token.string==~"[Cc]ollege"} | {Token.string=="COLLEGE"} |
+		{Token.string==~"[Cc]ouncil"} | {Token.string=="COUNCIL"} |
+		{Token.string==~"[Cc]enter"} | {Token.string=="CENTER"} |
+		{Token.string==~"[Dd]ept"} | {Token.string=="DEPT"} |
+		{Token.string==~"[Dd]epartment"} | {Token.string=="DEPARTMENT"} |
+		{Token.string==~"[Dd]ipartimento"} | {Token.string=="DIPARTIMENTO"} |
+		{Token.string==~"[Ll]aboratory"} | {Token.string=="LABORATORY"} |
+		{Token.string==~"[Ll]aboratories"} | {Token.string=="LABORATORIES"} |
+		{Token.string==~"[Ll]abs"} | {Token.string=="LABS"} |
+		{Token.string==~"[Ii]nstitute"} | {Token.string=="INSTITUTE"} |
+		{Token.string==~"[Ii]nstitut"} | {Token.string=="INSTITUT"} |
+		{Token.string==~"[Uu]niversity"} | {Token.string=="UNIVERSITY"} |
+		{Token.string==~"[Uu]niversit"} | {Token.string=="UNIVERSIT"} |
+		{Token.string==~"[Uu]niversitat"} | {Token.string=="UNIVERSITAT"} |
+		{Token.string==~"[Ss]chool"} | {Token.string=="SCHOOL"} |
+		{Token.string==~"[Rr]esearch"} | {Token.string=="RESEARCH"} |
+		{Token.string==~"[Ii]nc"} | {Token.string=="INC"}	
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):affiliationAnnotation
+-->
+:affiliationAnnotation.idrsAffiliation = {rule = "AffiliationAnnotation"}

@@ -1,0 +1,44 @@
+Phase:addressAnnotation
+Input: Token SpaceToken Lookup
+Options: control = appelt
+
+Rule:AddressAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		(
+			{Lookup.minorType=="city"}
+			({Token.string==","})?
+			{SpaceToken.kind=="space"}
+			{Lookup.minorType=="provine"}
+			{SpaceToken.kind=="space"}
+			{Lookup.minorType=="country"}
+		) |
+		({Lookup.minorType=="country"}) |
+		{Lookup.minorType=="city"} |
+		{Token.string==~"[Aa]venue"} |
+		{Token.string==~"[Bb]uilding"} |
+		{Token.string==~"[Hh]ill"} |
+		{Token.string==~"[St]"}{Token.string=="."} |
+		(
+			(({Token.string=="PO"}) | ({Token.string=="P"}{Token.string=="."}{Token.string=="O"}{Token.string=="."}))
+			{SpaceToken.kind=="space"}
+			{Token.string=="Box"}
+			
+		) |
+		{Token.string==~"[Pp]ark"}
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):addressAnnotation
+-->
+:addressAnnotation.idrsAddress = {rule = "AddressAnnotation"}

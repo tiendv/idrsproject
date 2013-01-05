@@ -1,0 +1,28 @@
+Phase:degreeAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:DegreeAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		({Token.string==~"[Tt]hesis"}{SpaceToken.kind=="space"}{Token.string==~"[Pp]roposal"}) |
+		({Token.string==~"[Tt]hesis"}{SpaceToken.kind=="space"}{Token.string==~"[Bb]y"}) |
+		({Token.string==~"[Ss]enior"}{SpaceToken.kind=="space"}{Token.string==~"[Tt]hesis"}) |
+		({Token.string==~"[Cc]ertified"}{SpaceToken.kind=="space"}{Token.string==~"[Bb]y"})
+		
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):degreeAnnotation
+-->
+:degreeAnnotation.idrsDegree = {rule = "DegreeAnnotation"}

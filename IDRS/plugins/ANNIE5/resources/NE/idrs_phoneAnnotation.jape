@@ -1,0 +1,31 @@
+Phase:phoneAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:PhoneAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		({Token.string=="("})?
+		({Token.string=="+"})?
+		{Token.kind=="number"}
+		({Token.string==")"})?
+		({Token.string=="-"} | {SpaceToken.kind=="space"})
+		{Token.kind=="number"}
+		({Token.string=="-"} | {SpaceToken.kind=="space"})
+		{Token.kind=="number"}
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):phoneAnnotation
+-->
+:phoneAnnotation.idrsPhone = {rule = "PhoneAnnotation"}
