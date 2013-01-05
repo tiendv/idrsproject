@@ -1,0 +1,36 @@
+Phase:pubnumAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:PubnumAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		({Token.string==~"[Ss]erial"}{SpaceToken.kind=="space"}{Token.string==~"[Nn]o"}) |
+		(
+			{Token.kind=="word", Token.orth=="allCaps"}
+			({SpaceToken.kind=="space"})?
+			{Token.kind=="number"}
+		) |
+		({Token.string==~"[Tt]echnical"}{SpaceToken.kind=="space"}{Token.string==~"[Rr]eport"}) |
+		(
+			{Token.kind=="word", Token.orth=="allCaps"}			
+			{Token.kind=="number"}
+			{Token.string=="/"}
+			{Token.kind=="number"}
+		)		
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):pubnumAnnotation
+-->
+:pubnumAnnotation.idrsPubnum = {rule = "PubnumAnnotation"}

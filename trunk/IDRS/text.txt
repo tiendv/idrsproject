@@ -1,0 +1,248 @@
+
+<title> Pseudo-Network Drivers and Virtual Networks +L+ </title>
+
+<author> S.M. Bellovin* +L+ </author>
+
+<email> smb@ulysses.att.com +L+ </email>
+
+<affiliation> AT&T Bell Laboratories +L+ </affiliation>
+
+<address> Murray Hill, New Jersey 07974 +L+ </address>
+
+<abstract> ABSTRACT +L+
+
+Many operating systems have long had pseudo-teletypes, inter-process +L+
+
+communication channels that provide terminal semantics on one end, +L+
+
+and a smart server program on the other. We describe an analogous +L+
+
+concept, pseudo-network drivers. One end of the driver appears to be +L+
+
+a real network device, with the appropriate interface and semantics; +L+
+
+data written to it goes to a program, however, rather than to a physical +L+
+
+medium. Using this and some auxiliary mechanisms, we present a +L+
+
+variety of applications, including system test, network monitoring, +L+
+
+dial-up TCP/IP, and ways to both improve and subvert network +L+
+
+security. Most notably, we show how pseudo-network devices can be +L+
+
+used to create virtual networks and to provide encrypted +L+
+
+communications capability. We describe two implementations, one +L+
+
+using a conventional driver for socket-based systems, and one using +L+
+
+stream pipes for System V. +L+ </abstract>
+
+<intro> 1. INTRODUCTION </intro>
+
+
+<NEW_HEADER>
+
+<pubnum> GIT-CC-92/60 +L+ </pubnum>
+
+<title> A Model-Based Approach to +L+
+
+Analogical Reasoning and Learning in Design +L+ </title>
+
+<author> Sambasiva R. Bhatta +L+ </author>
+
+<email> bhatta@cc.gatech.edu +L+ </email>
+
+<degree> A THESIS PROPOSAL +L+
+
+Presented to +L+
+
+The Academic Faculty +L+
+
+In Partial Fulfillment +L+
+
+of the Requirements for the Degree +L+
+
+Doctor of Philosophy +L+
+
+in Information and Computer Science +L+
+
+The Committee: +L+
+
+Dr. Ashok Goel (Advisor) +L+
+
+Dr. Richard Catrambone (Psy) +L+
+
+Dr. T. Govindaraj (ISyE) +L+
+
+Dr. Janet Kolodner +L+
+
+Dr. Ashwin Ram +L+ </degree>
+
+<affiliation> Georgia Institute of Technology +L+ </affiliation>
+
+<date> November 1992 +L+ </date>
+
+<note> This work has been supported by research grants from the Office of Naval Research (contract +L+
+
+N00014-92-J-1234) and NSF, a CER grant from NSF (grant CCR-86-19886), and equipment +L+
+
+donated by IBM, NCR, and Symbolics. +L+ </note>
+
+<page> +PAGE+ </page>
+
+
+<NEW_HEADER>
+
+<title> SuperWeb: Towards a Global Web-Based Parallel Computing Infrastructure +L+ </title>
+
+<author> Albert D. Alexandrov, Maximilian Ibel, Klaus E. Schauser, and Chris J. Scheiman +L+ </author>
+
+<affiliation> Department of Computer Science +L+
+
+University of California, Santa Barbara +L+ </affiliation>
+
+<address> Santa Barbara, CA 93106 +L+ </address>
+
+<email> fberto,ibel,schauser,chrissg@cs.ucsb.edu +L+ </email>
+
+<abstract> Abstract +L+
+
+The Internet, best known by most users as the WorldWide-Web, continues to expand at an amazing pace. We +L+
+
+propose a new infrastructure to harness the combined resources, such as CPU cycles or disk storage, and make them +L+
+
+available to everyone interested. This infrastructure has the +L+
+
+potential for solving parallel supercomputing applications +L+
+
+involving thousands of cooperating components. Our approach is based on recent advances in Internet connectivity +L+
+
+and the implementation of safe distributed computing embodied in languages such as Java. +L+
+
+We developed a prototype of a global computing infrastructure, called SuperWeb, that consists of hosts, brokers +L+
+
+and clients. Hosts register a fraction of their computing resources (CPU time, memory, bandwidth, disk space) with +L+
+
+resource brokers. Client computations are then mapped by +L+
+
+the broker onto the registered resources. We examine an economic model for trading computing resources, and discuss +L+
+
+several technical challenges associated with such a global +L+
+
+computing environment. +L+ </abstract>
+
+<keyword> Keywords: Global computing, Internet, Java, WorldWide-Web, massively parallel computing, secure computing, +L+
+
+microeconomic model. +L+ </keyword>
+
+<intro> 1 Introduction </intro>
+
+<NEW_HEADER>
+
+<title> A Tool for Massively Replicating Internet Archives: +L+
+
+Design, Implementation, and Experience +L+ </title>
+
+<author> Katia Obraczka +L+ </author>
+
+<affiliation> University of Southern California +L+
+
+Information Science Institute +L+ </affiliation>
+
+<address> 4676 Admiralty Way +L+
+
+Marina del Rey, CA 90292, USA +L+ </address>
+
+<email> katia@isi.edu +L+ </email>
+
+<author> Peter Danzig, Dante DeLucia, Erh-Yuan Tsai +L+ </author>
+
+<affiliation> University of Southern California +L+
+
+Computer Science Department +L+ </affiliation>
+
+<address> Los Angeles, CA 90089-0781 +L+ </address>
+
+<email> fdanzig, dante, erhyuantg@usc.edu +L+ </email>
+
+<abstract> Abstract +L+
+
+This paper reports the design, implementation, and performance of a scalable and efficient tool to replicate Internet information services. Our tool targets replication +L+
+
+degrees of tens of thousands of weakly-consistent replicas scattered throughout the Internet's thousands of autonomously administered domains. The main goal of our +L+
+
+replication tool is to make existing replication algorithms +L+
+
+scale in today's exponentially-growing, autonomously-managed internetworks. +L+ </abstract>
+
+<intro> 1. Introduction </intro>
+
+
+<NEW_HEADER>
+
+<title> An Optimal Weighting Criterion of Case Indexing for Both Numeric +L+
+
+and Symbolic Attributes +L+ </title>
+
+<author> Takao Mohri and Hidehiko Tanaka +L+ </author>
+
+<affiliation> Information Engineering Course, Faculty of Engineering +L+
+
+The University of Tokyo +L+ </affiliation>
+
+<address> 7-3-1 Hongo Bunkyo-ku, Tokyo 113, Japan +L+ </address>
+
+<email> fmohri,tanakag@MTL.T.u-tokyo.ac.jp +L+ </email>
+
+<abstract> Abstract +L+
+
+Indexing of cases is an important topic for Memory-Based Reasoning(MBR). One key problem is how to +L+
+
+assign weights to attributes of cases. Although several +L+
+
+weighting methods have been proposed, some methods cannot handle numeric attributes directly, so it +L+
+
+is necessary to discretize numeric values by classification. Furthermore, existing methods have no theoretical background, so little can be said about optimality. +L+
+
+We propose a new weighting method based on a statistical technique called Quantification Method II. It can +L+
+
+handle both numeric and symbolic attributes in the +L+
+
+same framework. Generated attribute weights are optimal in the sense that they maximize the ratio of variance between classes to variance of all cases. Experiments on several benchmark tests show that in many +L+
+
+cases, our method obtains higher accuracies than some +L+
+
+other weighting methods. The results also indicate +L+
+
+that it can distinguish relevant attributes from irrelevant ones, and can tolerate noisy data. +L+ </abstract>
+
+<intro> Introduction </intro>
+
+
+<NEW_HEADER>
+
+<title> Using Don't Cares in Logic Minimization for +L+
+
+LUT-Based FPGAs +L+ </title>
+
+<author>  Philip Chong  13327872 +L+ </author>
+
+<date> May 25, 1997 +L+ </date>
+
+<abstract> Abstract +L+
+
+Don't care information has proven to be useful in logic minimization. +L+
+
+Here, the use of don't care information in network collapsing for mapping +L+
+
+to LUT-based FPGAs is explored. Results are shown which indicate that +L+
+
+this approach does not result in appreciable improvements in network size. +L+ </abstract>
+
+<intro> 1 Introduction </intro>
+
+
+<NEW_HEADER>
+

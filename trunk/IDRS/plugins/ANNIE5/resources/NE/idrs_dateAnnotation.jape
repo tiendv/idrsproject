@@ -1,0 +1,43 @@
+Phase:dateAnnotation
+Input: Token SpaceToken Lookup
+Options: control = appelt
+
+Rule:DateAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		(
+			{Lookup.minorType=="month"}
+			{SpaceToken.kind=="space"}
+			{Lookup.majorType=="year"}			
+		) |
+		(
+			{Lookup.minorType=="month"}
+			{SpaceToken.kind=="space"}
+			{Token.kind=="number"}
+			{Token.string==","}
+			{SpaceToken.kind=="space"}
+			{Lookup.major=="year"}			
+		) |
+		(
+			{Token.kind=="number"}
+			{SpaceToken.kind=="space"}
+			{Lookup.minorType=="month"}
+			{SpaceToken.kind=="space"}
+			{Lookup.majorType=="year"}
+		)
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):dateAnnotation
+-->
+:dateAnnotation.idrsDate = {rule = "DateAnnotation"}

@@ -1,0 +1,32 @@
+Phase:noteAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:NoteAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		(
+			{Token.string==~"[Ss]upported"}
+			{SpaceToken.kind=="space"}
+			({Token.string=="partially"}{SpaceToken.kind=="space"})?
+			({Token.string=="by"} | {Token.string=="in"})
+		) |
+		{Token.string==~"[Vv]ersion"} |
+		({Token.string==~"[Ss]ubmitted"}{SpaceToken.kind=="space"}{Token.string=="to"}) |
+		{Token.string==~"[Cc]opyright"}		
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):noteAnnotation
+-->
+:noteAnnotation.idrsNote = {rule = "NoteAnnotation"}

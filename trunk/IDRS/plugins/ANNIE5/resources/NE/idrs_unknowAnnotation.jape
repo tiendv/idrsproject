@@ -1,0 +1,52 @@
+Phase: unknowAnnotation
+Input: Token Lookup Sentence idrsAffiliation idrsAddress idrsNote idrsEmail idrsDate idrsPhone idrsKeyWord idrsWeb idrsDegree idrsPubnum idrsLine
+Options: control = appelt
+
+Rule: unknowAnnotation
+Priority: 30
+(
+	({idrsLine}):sentence
+)
+-->
+{
+	//--- get the Sentences annotation set
+	gate.AnnotationSet SentenceSet = (gate.AnnotationSet)bindings.get("sentence");
+	
+	//--- get the only annotation from the set
+	gate.Annotation SentenceAnn = (gate.Annotation)SentenceSet.iterator().next();
+	
+	//--- get the Affiliation Email ... annotation set from a Line annotation
+	gate.AnnotationSet AffiliationAS = inputAS.get("idrsAffiliation", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet AddressAS = inputAS.get("idrsAddress", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet NoteAS = inputAS.get("idrsNote", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());	
+	gate.AnnotationSet EmailAS = inputAS.get("idrsEmail", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet DateAS = inputAS.get("idrsDate", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet PhoneAS = inputAS.get("idrsPhone", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet KeyWordAS = inputAS.get("idrsKeyWord", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet WebAS = inputAS.get("idrsWeb", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet DegreeAS = inputAS.get("idrsDegree", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	gate.AnnotationSet PubnumAS = inputAS.get("idrsPubnum", SentenceAnn.getStartNode().getOffset(), SentenceAnn.getEndNode().getOffset());
+	
+	List affiliationTokens = new ArrayList(AffiliationAS);
+	List addressTokens = new ArrayList(AddressAS);
+	List noteTokens = new ArrayList(NoteAS);
+	List emailTokens = new ArrayList(EmailAS);
+	List dateTokens = new ArrayList(DateAS);
+	List phoneTokens = new ArrayList(PhoneAS);
+	List keyWordTokens = new ArrayList(KeyWordAS);
+	List webTokens = new ArrayList(WebAS);
+	List degreeTokens = new ArrayList(DegreeAS);
+	List pubnumTokens = new ArrayList(PubnumAS);
+	
+	gate.FeatureMap features;
+	
+		
+	if(affiliationTokens.isEmpty() && emailTokens.isEmpty() && addressTokens.isEmpty() && noteTokens.isEmpty() && dateTokens.isEmpty() && phoneTokens.isEmpty() && keyWordTokens.isEmpty() && webTokens.isEmpty() && degreeTokens.isEmpty() && pubnumTokens.isEmpty())
+	{
+		features = Factory.newFeatureMap();
+		features.put("rule", "unknownAnnotation");
+		outputAS.add(SentenceAnn.getStartNode(), SentenceAnn.getEndNode(), "idrsUnknow",features);
+	}
+}
+
+

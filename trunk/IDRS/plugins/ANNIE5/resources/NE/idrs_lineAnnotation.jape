@@ -1,0 +1,15 @@
+Phase: lineAnnotation
+Input: Token SpaceToken
+Options: control = appelt
+
+Rule:LineAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})*
+	)+
+):lineAnnotation
+	({SpaceToken.kind=="control"})
+-->
+:lineAnnotation.idrsLine = {rule = "LineAnnotation"}

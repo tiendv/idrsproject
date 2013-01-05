@@ -1,0 +1,24 @@
+Phase:webAnnotation
+Input: Token SpaceToken Address
+Options: control = appelt
+
+Rule:WebAnnotation
+Priority: 30
+(
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+	(
+		{Address.kind=="url"}
+	)
+	({SpaceToken.kind=="space"})?
+	(
+		{Token}
+		({SpaceToken.kind=="space"})?
+		
+	)*
+):webAnnotation
+-->
+:webAnnotation.idrsWeb = {rule = "WebAnnotation"}
